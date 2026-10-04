@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Media raw source files
+*.mp4
+*.mov
+*.avi
+
+# Cloned / reference repos
+myporfolio/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
