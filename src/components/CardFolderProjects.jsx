@@ -127,15 +127,15 @@ export default function CardFolderProjects() {
         </div>
 
         {/* Quick Folder Switch Tabs */}
-        <div className="w-full overflow-hidden mb-6">
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none w-full">
+        <div className="w-full mb-6 sm:mb-8">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
             {featuredProjects.map((project, idx) => (
             <button
               key={project.id}
               type="button"
               onClick={() => handleShuffleTo(idx, idx > activeCardIndex ? 'next' : 'prev')}
               disabled={isShuffling}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 activeCardIndex === idx
                   ? 'bg-gold-gradient text-obsidian-base font-bold shadow-lg shadow-gold-primary/25 scale-[1.02]'
                   : 'bg-white/[0.04] text-white/70 hover:text-white hover:bg-white/10 border border-white/10 hover:border-gold-primary/40'
