@@ -231,7 +231,7 @@ export default function HeroSection() {
           {/* Subtitle / Professional Summary */}
           <ScrollReveal direction="up" delay={300}>
             <p className="text-white/80 text-sm sm:text-base md:text-lg font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-7">
-              I'm <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Computer Science graduate specializing in <span className="text-gold-light font-medium">Computer Vision, Deep Learning, Agentic AI, and RAG</span>. Transforming complex algorithms into scalable, real-world platforms.
+              I'm <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Computer Science graduate specializing in <span className="text-gold-light font-medium">Software Development, Deep Learning, Agentic AI, and RAG</span>. Transforming complex algorithms into scalable, real-world platforms.
             </p>
           </ScrollReveal>
 

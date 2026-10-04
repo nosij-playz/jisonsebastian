@@ -4,7 +4,7 @@
 export const PERSONAL_INFO = {
   name: "Jison Joseph Sebastian",
   title: "AI/ML Engineer · Generative AI · Full Stack Developer",
-  shortBio: "B.Tech Computer Science graduate, GATE 2026 qualified, with expertise in AI/ML, Full Stack Development, and Generative AI. Experienced in building intelligent applications using Computer Vision, Deep Learning, LLMs, Agentic AI, and RAG.",
+  shortBio: "B.Tech Computer Science graduate, GATE 2026 qualified, with expertise in AI/ML, Full Stack Development, and Generative AI. Experienced in building intelligent applications using Software Development, Deep Learning, LLMs, Agentic AI, and RAG.",
   mission: "Use technology to drive real-world change. Whether developing AI for cybersecurity or crafting digital tools for healthcare, I build with purpose, empathy, and efficiency.",
   email: "jisonjosephsebastian7007@gmail.com",
   phone: "+91 62385 25147",
