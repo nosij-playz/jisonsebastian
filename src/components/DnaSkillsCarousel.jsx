@@ -488,9 +488,6 @@ export default function DnaSkillsCarousel() {
                   <div className="text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wider">
                     SKILLS HUB
                   </div>
-                  <div className="text-[8px] font-mono text-gold-light/70 tracking-widest mt-0.5">
-                    GATE &apos;26 • 36+
-                  </div>
                 </div>
               )}
             </div>
