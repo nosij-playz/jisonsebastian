@@ -67,7 +67,7 @@ export default function CardFolderProjects() {
   };
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto">
+    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-14 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
@@ -127,14 +127,14 @@ export default function CardFolderProjects() {
         </div>
 
         {/* Quick Folder Switch Tabs */}
-        <div className="flex items-center gap-1.5 sm:gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex items-center gap-1.5 sm:gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none w-full max-w-full">
           {featuredProjects.map((project, idx) => (
             <button
               key={project.id}
               type="button"
               onClick={() => handleShuffleTo(idx, idx > activeCardIndex ? 'next' : 'prev')}
               disabled={isShuffling}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                 activeCardIndex === idx
                   ? 'bg-gold-gradient text-obsidian-base font-bold shadow-lg shadow-gold-primary/25 scale-[1.02]'
                   : 'bg-white/[0.04] text-white/70 hover:text-white hover:bg-white/10 border border-white/10 hover:border-gold-primary/40'
@@ -336,8 +336,8 @@ export default function CardFolderProjects() {
             <ScrollReveal key={project.id} direction="up" delay={(idx % 6) * 60}>
               <div className="glass-card p-5 sm:p-6 rounded-xl flex flex-col justify-between group h-full">
                 <div>
-                  <div className="flex items-start justify-between mb-2.5">
-                    <h4 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-gold-light transition-colors">
+                  <div className="flex items-start justify-between mb-2.5 gap-2">
+                    <h4 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-gold-light transition-colors break-words">
                       {project.title}
                     </h4>
                     <a
