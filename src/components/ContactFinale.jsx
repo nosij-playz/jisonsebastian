@@ -49,12 +49,21 @@ export default function ContactFinale() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/contact', {
+      const payload = {
+        access_key: '4fd90bd1-6255-4115-84a7-95ec85a91054',
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject || `Portfolio Inquiry from ${formData.name}`,
+        message: formData.message,
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -64,7 +73,7 @@ export default function ContactFinale() {
         setStatus('success');
       } else {
         setStatus('error');
-        setErrorMessage(data.error || 'Failed to dispatch message. Please try again or reach out directly.');
+        setErrorMessage(data.message || 'Failed to dispatch message. Please try again or reach out directly.');
       }
     } catch (err) {
       console.error('Contact Form Dispatch Error:', err);
