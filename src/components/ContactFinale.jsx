@@ -49,21 +49,16 @@ export default function ContactFinale() {
     setErrorMessage('');
 
     try {
-      const payload = {
-        access_key: '4fd90bd1-6255-4115-84a7-95ec85a91054',
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject || `Portfolio Inquiry from ${formData.name}`,
-        message: formData.message,
-      };
+      const formPayload = new FormData();
+      formPayload.append('access_key', '4fd90bd1-6255-4115-84a7-95ec85a91054');
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('subject', formData.subject || `Portfolio Inquiry from ${formData.name}`);
+      formPayload.append('message', formData.message);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: formPayload
       });
 
       const data = await response.json();
