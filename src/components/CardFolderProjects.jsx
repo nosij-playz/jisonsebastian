@@ -67,7 +67,7 @@ export default function CardFolderProjects() {
   };
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto overflow-hidden">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-14 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
@@ -152,8 +152,8 @@ export default function CardFolderProjects() {
         </div>
 
         {/* 3D Fanning Deck Stage */}
-        <div className="relative min-h-[440px] sm:min-h-[480px] flex items-center justify-center perspective-[1200px] pt-10 pb-6 select-none">
-          <div className="relative w-full max-w-3xl h-[340px] sm:h-[380px]">
+        <div className="relative min-h-[500px] sm:min-h-[560px] flex items-center justify-center perspective-[1200px] pt-10 pb-6 select-none">
+          <div className="relative w-full max-w-4xl h-[400px] sm:h-[460px]">
             {featuredProjects.map((project, idx) => {
               const isSelected = activeCardIndex === idx;
               const isEjecting = isShuffling && shufflingIdx === idx;
@@ -331,10 +331,10 @@ export default function CardFolderProjects() {
         </ScrollReveal>
 
         {/* Catalog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, idx) => (
             <ScrollReveal key={project.id} direction="up" delay={(idx % 6) * 60}>
-              <div className="glass-card p-5 sm:p-6 rounded-xl flex flex-col justify-between group h-full">
+              <div className="glass-card p-6 rounded-xl flex flex-col justify-between group h-full">
                 <div>
                   <div className="flex items-start justify-between mb-2.5 gap-2">
                     <h4 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-gold-light transition-colors break-words">
