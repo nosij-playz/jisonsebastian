@@ -78,7 +78,7 @@ export default function ContactFinale() {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto flex flex-col justify-center">
+    <section id="contact" className="relative w-full min-h-screen py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto flex flex-col justify-center">
       {/* Climax Typographic Headline */}
       <ScrollReveal direction="down" className="text-center mb-14 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-xs font-mono text-gold-light mb-5 shadow-sm">

@@ -19,7 +19,7 @@ export default function BentoGridSection() {
   };
 
   return (
-    <section id="bento" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto">
+    <section id="bento" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-14 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
@@ -40,7 +40,7 @@ export default function BentoGridSection() {
         <ScrollReveal direction="up" delay={100} className="md:col-span-2">
           <div 
             onMouseMove={handleMouseMove}
-            className="relative glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between"
+            className="relative w-full glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between"
           >
             {/* Spotlight gradient */}
             <div 
@@ -50,7 +50,7 @@ export default function BentoGridSection() {
               }}
             />
 
-            <div className="relative z-10">
+            <div className="relative w-full z-10">
               <div className="flex items-center justify-between mb-4">
                 <span className="font-mono text-xs uppercase tracking-wider text-gold-primary">
                   01 // AGENTIC AI &amp; VISION
@@ -67,7 +67,7 @@ export default function BentoGridSection() {
             </div>
 
             {/* Core Competencies Badges */}
-            <div className="relative z-10 flex flex-wrap gap-1.5 sm:gap-2 pt-4 border-t border-white/10">
+            <div className="relative w-full z-10 flex flex-wrap gap-1.5 sm:gap-2 pt-4 border-t border-white/10">
               {['PyTorch', 'TensorFlow', 'LLMs', 'Agentic AI', 'OpenCV', 'RAG', 'CNNs', 'GANs'].map((tag) => (
                 <span 
                   key={tag}
@@ -83,9 +83,9 @@ export default function BentoGridSection() {
         {/* Card 2: Award Accolade (SRISHTI 2026 Winner) */}
         <ScrollReveal direction="up" delay={200} className="md:col-span-1">
           <div 
-            className="relative glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between border-gold-primary/30 bg-gradient-to-br from-gold-primary/[0.08] to-transparent"
+            className="relative w-full glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between border-gold-primary/30 bg-gradient-to-br from-gold-primary/[0.08] to-transparent"
           >
-            <div className="relative z-10">
+            <div className="relative w-full z-10">
               <div className="w-11 h-11 rounded-xl bg-gold-primary/20 border border-gold-primary/40 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                 🏆
               </div>
@@ -102,7 +102,7 @@ export default function BentoGridSection() {
               </p>
             </div>
 
-            <div className="relative z-10 mt-6 pt-4 border-t border-gold-primary/20 flex items-center justify-between text-[11px] font-mono text-gold-light">
+            <div className="relative w-full z-10 mt-6 pt-4 border-t border-gold-primary/20 flex items-center justify-between text-[11px] font-mono text-gold-light">
               <span>ACCURACY: 92%</span>
               <span>ENSEMBLE AI</span>
             </div>
@@ -111,8 +111,8 @@ export default function BentoGridSection() {
 
         {/* Card 3: Academic Foundations & GATE 2026 */}
         <ScrollReveal direction="up" delay={250} className="md:col-span-1">
-          <div className="relative glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between">
-            <div className="relative z-10">
+          <div className="relative w-full glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between">
+            <div className="relative w-full z-10">
               <div className="w-11 h-11 rounded-xl bg-cyber-emerald/15 border border-cyber-emerald/30 flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform">
                 🎓
               </div>
@@ -135,7 +135,7 @@ export default function BentoGridSection() {
               </div>
             </div>
 
-            <div className="relative z-10 mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-white/60">
+            <div className="relative w-full z-10 mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-white/60">
               CGPA: 8.25 / 10.0 · Vimal Jyothi College
             </div>
           </div>
@@ -143,8 +143,8 @@ export default function BentoGridSection() {
 
         {/* Card 4: Double Span (Enterprise Systems & Certifications) */}
         <ScrollReveal direction="up" delay={350} className="md:col-span-2">
-          <div className="relative glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between">
-            <div className="relative z-10">
+          <div className="relative w-full glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between">
+            <div className="relative w-full z-10">
               <div className="flex items-center justify-between mb-4">
                 <span className="font-mono text-xs uppercase tracking-wider text-gold-primary">
                   03 // ENTERPRISE &amp; CERTIFICATIONS
@@ -161,7 +161,7 @@ export default function BentoGridSection() {
             </div>
 
             {/* Grid of Verified Certifications */}
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-4 border-t border-white/10">
+            <div className="relative w-full z-10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-4 border-t border-white/10">
               {AWARDS_AND_EDUCATION.certifications.map((cert) => (
                 <div 
                   key={cert.name}

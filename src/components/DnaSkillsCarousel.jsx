@@ -279,7 +279,7 @@ export default function DnaSkillsCarousel() {
   ];
 
   return (
-    <section id="skills" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section id="skills" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
@@ -351,7 +351,7 @@ export default function DnaSkillsCarousel() {
       </ScrollReveal>
 
       {/* Perfectly Aligned Celestial Oval Viewport */}
-      <ScrollReveal direction="scale" delay={150} className="relative min-h-[520px] sm:min-h-[580px] md:min-h-[640px] lg:min-h-[680px] flex items-center justify-center my-4 select-none cursor-grab active:cursor-grabbing overflow-visible">
+      <ScrollReveal direction="scale" delay={150} className="relative w-full min-h-[520px] sm:min-h-[580px] md:min-h-[640px] lg:min-h-[680px] flex items-center justify-center my-4 select-none cursor-grab active:cursor-grabbing overflow-visible">
         {/* Interaction Surface */}
         <div
           onMouseDown={(e) => handleDragStart(e.clientX, e.clientY)}
@@ -362,7 +362,7 @@ export default function DnaSkillsCarousel() {
           onTouchMove={(e) => handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
           onTouchEnd={handleDragEnd}
           onClick={() => setHoveredSkill(null)}
-          className="relative w-full max-w-[1120px] h-[480px] sm:h-[540px] md:h-[600px] lg:h-[640px] flex items-center justify-center"
+          className="relative w-full w-full max-w-[1120px] h-[480px] sm:h-[540px] md:h-[600px] lg:h-[640px] flex items-center justify-center"
         >
           {/* Luminous Oval Orbit Tracks (Mathematically identical Rx and Ry to skills) */}
           {orbitTracks.map((track, idx) => (

@@ -95,7 +95,7 @@ export default function HeroSection() {
     <section 
       id="hero" 
       onMouseMove={handleHeroMouseMove}
-      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-8 pt-28 sm:pt-36 pb-20 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 sm:px-8 pt-28 sm:pt-36 pb-20 overflow-hidden"
     >
       {/* 3. Liquid Gold Cursor Spotlight */}
       <div 

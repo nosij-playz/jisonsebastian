@@ -8,7 +8,7 @@ import ScrollReveal from './ScrollReveal';
  */
 export default function ExperienceTimeline() {
   return (
-    <section id="experience" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="experience" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-16 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
@@ -23,9 +23,9 @@ export default function ExperienceTimeline() {
       </ScrollReveal>
 
       {/* Chronological Timeline Cards */}
-      <div className="relative border-l border-white/10 ml-2 sm:ml-8 pl-5 sm:pl-10 space-y-8 sm:space-y-12">
+      <div className="relative w-full border-l border-white/10 ml-2 sm:ml-8 pl-5 sm:pl-10 space-y-8 sm:space-y-12">
         {INTERNSHIPS.map((item, index) => (
-          <ScrollReveal key={item.company} direction="left" delay={index * 100} className="relative group">
+          <ScrollReveal key={item.company} direction="left" delay={index * 100} className="relative w-full group">
             {/* Timeline Node Indicator */}
             <div className="absolute -left-[27px] sm:-left-[47px] top-1.5 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-obsidian-base border-2 border-gold-primary group-hover:scale-125 group-hover:bg-gold-primary transition-all flex items-center justify-center">
               <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gold-light" />

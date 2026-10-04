@@ -67,7 +67,7 @@ export default function CardFolderProjects() {
   };
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 max-w-6xl mx-auto overflow-hidden">
+    <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 w-full max-w-6xl mx-auto overflow-hidden">
       {/* Section Header */}
       <ScrollReveal direction="down" className="text-center mb-14 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
