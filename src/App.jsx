@@ -18,8 +18,8 @@ export default function App() {
   const TOTAL_FRAMES = 452;
   const imageCacheRef = useRef([]);
 
-  // Frame URL constructor
-  const getFrameUrl = (idx) => `/frames/frame_${idx.toString().padStart(4, '0')}.png`;
+  // Frame URL constructor (1080p high-performance WebP)
+  const getFrameUrl = (idx) => `/frames/frame_${idx.toString().padStart(4, '0')}.webp`;
 
   // Preload initial frames buffer for stutter-free video scrub
   useEffect(() => {
