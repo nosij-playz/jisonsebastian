@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ALL_PROJECTS } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
+import ProjectArchitectureDiagram from './ProjectArchitectureDiagram';
 
 /**
  * 3D Interactive Project Deck & Complete Catalog:
- * Tactile 3D card deck shuffle on click (dealing & stacking animations, no flip).
+ * Featured projects fan out on hover and keyboard focus.
  */
 export default function CardFolderProjects() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [isShuffling, setIsShuffling] = useState(false);
-  const [shufflingIdx, setShufflingIdx] = useState(null);
-  const [shuffleDirection, setShuffleDirection] = useState('next'); // 'next' | 'prev'
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const categories = [
     { id: 'all', label: 'All Projects (15)' },
@@ -33,38 +23,6 @@ export default function CardFolderProjects() {
   const filteredProjects = activeCategory === 'all' 
     ? ALL_PROJECTS 
     : ALL_PROJECTS.filter((p) => p.category === activeCategory);
-
-  const handleShuffleTo = (targetIdx = null, direction = 'next') => {
-    if (isShuffling) return;
-
-    let nextIndex;
-    if (targetIdx !== null) {
-      nextIndex = targetIdx;
-    } else if (direction === 'prev') {
-      nextIndex = (activeCardIndex - 1 + featuredProjects.length) % featuredProjects.length;
-    } else {
-      nextIndex = (activeCardIndex + 1) % featuredProjects.length;
-    }
-
-    if (nextIndex === activeCardIndex) {
-      nextIndex = (activeCardIndex + 1) % featuredProjects.length;
-    }
-
-    setIsShuffling(true);
-    setShufflingIdx(activeCardIndex);
-    setShuffleDirection(direction);
-
-    // Eject phase: card peels out sideways/upwards
-    setTimeout(() => {
-      setActiveCardIndex(nextIndex);
-
-      // Settle phase: card inserts into back of deck
-      setTimeout(() => {
-        setIsShuffling(false);
-        setShufflingIdx(null);
-      }, 360);
-    }, 220);
-  };
 
   return (
     <section id="projects" className="relative py-24 sm:py-32 px-4 sm:px-8 w-full max-w-6xl mx-auto overflow-hidden">
@@ -82,59 +40,33 @@ export default function CardFolderProjects() {
       </ScrollReveal>
 
       {/* =========================================================
-          INTERACTIVE 3D FANNING DECK (Click to switch, natural scroll)
+          INTERACTIVE 3D FANNING DECK
       ========================================================= */}
       <ScrollReveal direction="up" delay={100} className="mb-20 sm:mb-28">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-4 border-b border-white/10">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-sm bg-gold-primary"></span>
-            <h3 className="font-display text-base sm:text-xl font-bold text-white tracking-tight">
-              3D Interactive Folder Deck <span className="hidden sm:inline">(Top 5 Flagships)</span>
-            </h3>
-          </div>
-          
-          {/* Deck Controls: Prev, Next, Counter */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={() => handleShuffleTo(null, 'prev')}
-                disabled={isShuffling}
-                className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-gold-primary/20 border border-white/10 hover:border-gold-primary/50 text-white hover:text-gold-light text-xs font-mono transition-all flex items-center gap-1.5 disabled:opacity-50 cursor-pointer active:scale-95"
-                title="Shuffle Previous"
-              >
-                <span>←</span>
-                <span className="hidden sm:inline">PREV</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleShuffleTo(null, 'next')}
-                disabled={isShuffling}
-                className="px-3 py-1.5 rounded-lg bg-gold-primary/15 hover:bg-gold-primary/30 border border-gold-primary/40 text-gold-light text-xs font-mono transition-all flex items-center gap-1.5 disabled:opacity-50 cursor-pointer active:scale-95 group"
-                title="Shuffle Next"
-              >
-                <span className="group-hover:rotate-180 transition-transform duration-500">🔀</span>
-                <span>SHUFFLE NEXT</span>
-                <span>→</span>
-              </button>
+            <div>
+              <h3 className="font-display text-base sm:text-xl font-bold text-white tracking-tight">
+                Flagship Deck:
+              </h3>
+              <p className="text-white/55 text-xs sm:text-sm mt-1">
+                A few standout projects from the full collection.
+              </p>
             </div>
-
-            <span className="font-mono text-xs text-white/50 border-l border-white/10 pl-3">
-              [0{activeCardIndex + 1} // 05]
-            </span>
           </div>
+
         </div>
 
         {/* Quick Folder Switch Tabs */}
         <div className="w-full mb-6 sm:mb-8">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 w-full">
             {featuredProjects.map((project, idx) => (
             <button
               key={project.id}
               type="button"
-              onClick={() => handleShuffleTo(idx, idx > activeCardIndex ? 'next' : 'prev')}
-              disabled={isShuffling}
+              onClick={() => setActiveCardIndex(idx)}
+              aria-pressed={activeCardIndex === idx}
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 activeCardIndex === idx
                   ? 'bg-gold-gradient text-obsidian-base font-bold shadow-lg shadow-gold-primary/25 scale-[1.02]'
@@ -156,55 +88,29 @@ export default function CardFolderProjects() {
         {/* 3D Fanning Deck Stage */}
         <div className="w-full overflow-hidden relative z-10">
           <div className="relative min-h-[500px] sm:min-h-[560px] flex items-center justify-center perspective-[1200px] pt-10 pb-6 select-none w-full">
-            <div className="relative w-full max-w-4xl h-[400px] sm:h-[460px]">
+            <div
+              className="project-deck-fan relative w-full max-w-lg h-[480px] sm:h-[520px]"
+              role="group"
+              aria-label="Featured project card fan"
+            >
             {featuredProjects.map((project, idx) => {
               const isSelected = activeCardIndex === idx;
-              const isEjecting = isShuffling && shufflingIdx === idx;
-              const pos = (idx - activeCardIndex + featuredProjects.length) % featuredProjects.length;
-
-              // Compute stack offsets
-              const offsetX = isMobile ? pos * 8 : pos * 15;
-              const offsetY = isMobile ? -pos * 10 : -pos * 18;
-              const offsetZ = isSelected ? 45 : (20 - pos * 25);
-              const rotateZ = pos * (isMobile ? 1.0 : 1.8);
-              const scale = 1 - pos * 0.03;
-
-              // Compute eject trajectory
-              const ejectX = isMobile 
-                ? (shuffleDirection === 'prev' ? -70 : 70) 
-                : (shuffleDirection === 'prev' ? -140 : 140);
-              const ejectY = -35;
-              const ejectZ = 95;
-              const ejectRotate = shuffleDirection === 'prev' ? -9 : 9;
-              const ejectScale = 0.96;
-
-              const transformStyle = isEjecting
-                ? `translateX(${ejectX}px) translateY(${ejectY}px) translateZ(${ejectZ}px) rotateZ(${ejectRotate}deg) scale(${ejectScale})`
-                : `translateX(${offsetX}px) translateY(${offsetY}px) translateZ(${offsetZ}px) rotateZ(${rotateZ}deg) scale(${scale})`;
-
-              const zIndex = isEjecting ? 40 : (isSelected ? 30 : Math.max(1, 25 - pos * 5));
-              const opacity = isEjecting ? 0.95 : Math.max(0.35, 1 - pos * 0.15);
+              const fanIndex = ((idx - activeCardIndex + featuredProjects.length + Math.floor(featuredProjects.length / 2)) % featuredProjects.length) - Math.floor(featuredProjects.length / 2);
+              const fanLift = fanIndex * fanIndex * -2;
 
               return (
                 <div
                   key={project.id}
-                  onClick={() => {
-                    if (isSelected) {
-                      handleShuffleTo(null, 'next');
-                    } else {
-                      handleShuffleTo(idx, idx > activeCardIndex ? 'next' : 'prev');
-                    }
-                  }}
-                  className={`absolute inset-0 rounded-2xl glass-card p-6 sm:p-8 cursor-pointer select-none transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                  className={`project-deck-card absolute inset-0 rounded-2xl glass-card p-6 sm:p-8 select-none ${
                     isSelected 
                       ? 'border-gold-primary shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.18)]' 
                       : 'border-white/15 hover:border-gold-primary/60 hover:shadow-lg'
                   }`}
                   style={{
-                    transform: transformStyle,
-                    zIndex,
-                    opacity,
-                    transformStyle: 'preserve-3d',
+                    '--n': fanIndex,
+                    '--fan-rotation': `${fanIndex * 15}deg`,
+                    '--fan-lift': `${fanLift}px`,
+                    zIndex: 5 - Math.abs(fanIndex),
                   }}
                 >
                   {/* Top Bar: Title, Badges & Action */}
@@ -233,18 +139,10 @@ export default function CardFolderProjects() {
                     </div>
 
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      {isSelected && (
-                        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-[10px] font-mono text-gold-light group hover:border-gold-primary transition-all">
-                          <span className="text-gold-primary animate-spin-slow">🔀</span>
-                          <span>CLICK TO SHUFFLE</span>
-                        </div>
-                      )}
-
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
                         className="p-2.5 sm:p-3 rounded-xl bg-white/[0.05] hover:bg-gold-primary/25 border border-white/10 hover:border-gold-primary text-white hover:text-gold-light transition-all"
                         title="View on GitHub"
                       >
@@ -259,6 +157,8 @@ export default function CardFolderProjects() {
                   <p className="text-white/75 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 mb-5">
                     {project.description}
                   </p>
+
+                  <ProjectArchitectureDiagram projectId={project.id} />
 
                   {/* Tech Badges */}
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 sm:pt-4 border-t border-white/10">
@@ -285,19 +185,19 @@ export default function CardFolderProjects() {
               <button
                 key={idx}
                 type="button"
-                onClick={() => handleShuffleTo(idx, idx > activeCardIndex ? 'next' : 'prev')}
-                disabled={isShuffling}
+                onClick={() => setActiveCardIndex(idx)}
+                aria-label={`Show project ${idx + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   activeCardIndex === idx 
                     ? 'w-8 bg-gold-primary shadow-lg shadow-gold-primary/30' 
                     : 'w-2 bg-white/20 hover:bg-white/50'
                 }`}
-                title={`Shuffle to project ${idx + 1}`}
+                title={`Show project ${idx + 1}`}
               />
             ))}
           </div>
           <span className="font-mono text-[10px] text-white/40 uppercase tracking-widest mt-1">
-            ACTIVE: [0{activeCardIndex + 1} // 05] · CLICK ANY CARD OR TAB TO SHUFFLE DECK
+            Hover to fan · Tab to spread
           </span>
         </div>
       </ScrollReveal>
@@ -309,10 +209,10 @@ export default function CardFolderProjects() {
         <ScrollReveal direction="up" className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div>
             <h3 className="font-display text-lg sm:text-2xl font-bold text-white leading-snug">
-              Complete Project Catalog <span className="block sm:inline sm:text-white/70">(All 15 Verified Repos)</span>
+              Complete Project Catalog
             </h3>
-            <p className="text-white/50 text-[10px] sm:text-xs font-mono mt-1.5 sm:mt-1 leading-relaxed">
-              EVERY PRODUCTION REPO, ML PIPELINE, AND UTILITY PRESERVED FROM OLD PORTFOLIO
+            <p className="text-white/50 text-xs sm:text-sm mt-1.5 leading-relaxed">
+              Includes some of my strongest work.
             </p>
           </div>
 

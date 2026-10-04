@@ -2,6 +2,35 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { SKILLS_GALAXY } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
 
+const SKILL_WORKFLOWS = {
+  'Scikit-Learn': ['Prepare and split the data', 'Train a baseline, then tune it', 'Check results on unseen data'],
+  'CNNs & GANs': ['Prepare and augment image data', 'Train the model and inspect outputs', 'Evaluate quality and refine the pipeline'],
+  'AI Chatbots': ['Identify the user task and source material', 'Connect the model to a clear conversation flow', 'Test responses for usefulness and failure cases'],
+  'Supervised & Unsupervised': ['Define the question and available labels', 'Choose prediction or clustering methods', 'Review metrics and patterns before using results'],
+  'Feature Engineering': ['Inspect raw fields and missing values', 'Create and transform useful features', 'Check for leakage and compare model results'],
+  'Pandas & NumPy': ['Load and inspect the dataset', 'Clean, reshape, and calculate the data', 'Pass consistent arrays or tables into analysis'],
+  Python: ['Break the task into clear modules', 'Implement the logic and handle edge cases', 'Test the pieces and connect the workflow'],
+  Flask: ['Define routes and request formats', 'Validate input and call the application logic', 'Return clear responses and handle errors'],
+  'REST APIs': ['Model resources and endpoint contracts', 'Validate requests and apply access rules', 'Return consistent status codes and responses'],
+  React: ['Break the interface into reusable components', 'Connect state and user actions', 'Check responsive behavior and accessibility'],
+  'Node.js': ['Define the service and its routes', 'Handle async work and data access', 'Add error handling and verify API behavior'],
+  'HTML5 & CSS3': ['Structure content with semantic markup', 'Build responsive layouts and states', 'Check keyboard access and browser behavior'],
+  'SAP ABAP': ['Understand the business process and data', 'Implement the required ABAP logic', 'Test against expected SAP scenarios'],
+  'SAP Tech Consultant': ['Gather requirements from users', 'Map needs to SAP capabilities', 'Configure, integrate, and validate the solution'],
+  'SAP Fiori & Automation': ['Map the user task and approval flow', 'Build the Fiori interaction or automation', 'Test the flow with realistic scenarios'],
+  Docker: ['Define the application image and dependencies', 'Build and run the container consistently', 'Configure deployment and inspect runtime behavior'],
+  'Google Cloud (GCP)': ['Choose services for the application needs', 'Configure and deploy the workload', 'Monitor access, reliability, and usage'],
+  'Git & GitHub': ['Create a focused branch for the change', 'Commit work in reviewable steps', 'Review, merge, and keep the history clear'],
+  SQLite: ['Design tables and relationships', 'Use queries and transactions for app data', 'Check constraints and persistence behavior'],
+  SQL: ['Model the data and relationships', 'Write queries for the application needs', 'Check results, indexes, and transaction behavior'],
+  MySQL: ['Design tables and constraints', 'Build queries and transactions', 'Review performance and data integrity'],
+  PostgreSQL: ['Define relational tables and constraints', 'Write queries and use transactions', 'Validate data integrity and query performance'],
+  MongoDB: ['Shape documents around access patterns', 'Query and update collections', 'Validate indexes and consistency needs'],
+  Firebase: ['Choose the right Firebase services', 'Model data and configure access rules', 'Connect the app and verify live updates'],
+};
+
+const findSkill = (name, ...groups) => groups.flat().find((skill) => skill.name === name);
+
 /**
  * The Neural Skills Galaxy - Perfectly Aligned Celestial Oval Matrix:
  * - 3 concentric, counter-rotating oval orbital rings (36+ CV-verified skills).
@@ -27,6 +56,7 @@ export default function DnaSkillsCarousel() {
   const [reverseDirection, setReverseDirection] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'outer' | 'mid' | 'inner'
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [flippedSkills, setFlippedSkills] = useState({});
 
   // Drag & Inertia Tracking
   const isDraggingRef = useRef(false);
@@ -271,11 +301,52 @@ export default function DnaSkillsCarousel() {
     }
   ];
 
-  // Verified Category Strands (Preserved As Previous Cards Below)
+  // Four balanced groups of six featured skills.
   const strands = [
-    { id: 'ai', title: 'AI, ML & Vision', skills: SKILLS_GALAXY.ai_ml, color: 'border-cyber-emerald text-cyber-emerald' },
-    { id: 'web', title: 'Full Stack & APIs', skills: SKILLS_GALAXY.development, color: 'border-gold-primary text-gold-light' },
-    { id: 'enterprise', title: 'Enterprise & DevOps', skills: SKILLS_GALAXY.enterprise_cloud, color: 'border-cyber-cyan text-cyber-cyan' },
+    {
+      id: 'ai', title: 'AI & Machine Learning', color: 'border-cyber-emerald text-cyber-emerald',
+      skills: [
+        findSkill('Scikit-Learn', SKILLS_GALAXY.ai_ml),
+        findSkill('Supervised & Unsupervised', SKILLS_GALAXY.ai_ml),
+        findSkill('Feature Engineering', SKILLS_GALAXY.ai_ml),
+        findSkill('Pandas & NumPy', SKILLS_GALAXY.ai_ml),
+        findSkill('AI Chatbots', SKILLS_GALAXY.gen_ai_nlp),
+        findSkill('CNNs & GANs', SKILLS_GALAXY.ai_ml),
+      ],
+    },
+    {
+      id: 'web', title: 'Full Stack & APIs', color: 'border-gold-primary text-gold-light',
+      skills: [
+        findSkill('Python', SKILLS_GALAXY.development),
+        findSkill('React', SKILLS_GALAXY.development),
+        findSkill('Node.js', SKILLS_GALAXY.development),
+        findSkill('Flask', SKILLS_GALAXY.development),
+        findSkill('REST APIs', SKILLS_GALAXY.development),
+        findSkill('HTML5 & CSS3', SKILLS_GALAXY.development),
+      ],
+    },
+    {
+      id: 'databases', title: 'Databases & Storage', color: 'border-cyber-cyan text-cyber-cyan',
+      skills: [
+        { name: 'SQL', level: 'Advanced', category: 'Relational Queries' },
+        { name: 'MySQL', level: 'Advanced', category: 'Relational Database' },
+        { name: 'PostgreSQL', level: 'Advanced', category: 'Relational Database' },
+        findSkill('MongoDB', SKILLS_GALAXY.development),
+        findSkill('Firebase', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('SQLite', SKILLS_GALAXY.enterprise_cloud),
+      ],
+    },
+    {
+      id: 'enterprise', title: 'Enterprise & DevOps', color: 'border-gold-primary text-gold-light',
+      skills: [
+        findSkill('SAP ABAP', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('SAP Tech Consultant', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('Git & GitHub', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('Google Cloud (GCP)', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('Docker', SKILLS_GALAXY.enterprise_cloud),
+        findSkill('SAP Fiori & Automation', SKILLS_GALAXY.enterprise_cloud),
+      ],
+    },
   ];
 
   return (
@@ -289,7 +360,7 @@ export default function DnaSkillsCarousel() {
           The Neural <span className="gold-gradient-text">Skills Galaxy</span>
         </h2>
         <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-          36+ CV-verified technologies orbiting along 3 aligned celestial oval paths: Deep Neural Systems, Generative AI & Full Stack, and Core Systems & Cloud.
+          Explore the full range of technologies I work with, from AI and full-stack development to core systems and cloud.
         </p>
       </ScrollReveal>
 
@@ -380,7 +451,7 @@ export default function DnaSkillsCarousel() {
             />
           ))}
 
-          {/* Central Holographic Neural Nexus Core */}
+          {/* Central skills indicator */}
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center"
             style={{ zIndex: 50 }}
@@ -415,7 +486,7 @@ export default function DnaSkillsCarousel() {
                 <div className="text-center px-1">
                   <div className="w-2 h-2 rounded-full bg-gold-primary mx-auto mb-1 animate-pulse" />
                   <div className="text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wider">
-                    NEURAL NEXUS
+                    SKILLS HUB
                   </div>
                   <div className="text-[8px] font-mono text-gold-light/70 tracking-widest mt-0.5">
                     GATE &apos;26 • 36+
@@ -438,46 +509,71 @@ export default function DnaSkillsCarousel() {
         DRAG TO SPIN OVAL ORBITS // HOVER OR TAP SKILL TO INSPECT TELEMETRY
       </div>
 
-      {/* =========================================================
-          DETAILED CATEGORIZED STRANDS GRID (PRESERVED PREVIOUS CARDS)
-      ========================================================= */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-6">
+      {/* Featured skills in four balanced groups, with a practical workflow on each card. */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-6">
         {strands.map((strand, sIdx) => (
-          <ScrollReveal key={strand.id} direction="up" delay={sIdx * 100}>
-            <div className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between h-full">
+          <ScrollReveal key={strand.id} direction={['up', 'down', 'right', 'left'][sIdx]} distance={80} delay={sIdx * 100}>
+            <div className="h-full rounded-xl border border-white/10 bg-white/[0.03] p-5 text-white shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-gold-primary/45 hover:bg-white/[0.05] hover:shadow-[0_0_28px_rgba(212,175,55,0.14)] focus-within:border-gold-primary/45 focus-within:shadow-[0_0_28px_rgba(212,175,55,0.14)] sm:p-6">
               <div>
-                <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+                <div className="flex min-h-[96px] items-center justify-between pb-4 mb-6 border-b border-white/10">
                   <h4 className="font-display text-lg font-bold text-white">
                     {strand.title}
                   </h4>
                   <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${strand.color}`}>
-                    VERIFIED
+                    FEATURED
                   </span>
                 </div>
 
-                <div className="space-y-2.5">
+                <div className="grid grid-cols-1 gap-2.5">
                   {strand.skills.map((skill) => (
-                    <div 
+                    <article
                       key={skill.name}
-                      className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 transition-colors"
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${skill.name}: flip for workflow`}
+                      aria-pressed={Boolean(flippedSkills[skill.name])}
+                      onClick={() => setFlippedSkills((current) => ({ ...current, [skill.name]: !current[skill.name] }))}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setFlippedSkills((current) => ({ ...current, [skill.name]: !current[skill.name] }));
+                        }
+                      }}
+                      className={`skill-flip-card cursor-pointer rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-primary ${flippedSkills[skill.name] ? 'is-flipped' : ''}`}
                     >
-                      <div className="flex items-center gap-2.5">
-                        <div className={`w-1.5 h-1.5 rounded-full ${skill.highlight ? 'bg-gold-primary' : 'bg-white/40'}`} />
-                        <span className="text-sm font-medium text-white/90">
-                          {skill.name}
-                        </span>
+                      <div className="skill-flip-inner">
+                        <div className="skill-flip-face rounded-lg border border-white/10 bg-[#11131a] p-4 flex flex-col justify-between transition-colors">
+                          <div>
+                            <div className="flex items-start justify-between gap-2">
+                              <span className="text-sm font-semibold leading-snug text-white">{skill.name}</span>
+                              <span className={`shrink-0 text-[9px] font-mono uppercase tracking-wide ${skill.level === 'Certified' ? 'text-cyber-cyan' : 'text-gold-light'}`}>
+                                {skill.level}
+                              </span>
+                            </div>
+                            <p className="text-xs text-white/45 mt-2">{skill.category}</p>
+                          </div>
+                          <span className="text-[10px] text-white/40 mt-4">Hover or focus to see workflow ↗</span>
+                        </div>
+                        <div className="skill-flip-face skill-flip-back rounded-lg border border-gold-primary/30 bg-[#11131a] p-3.5">
+                          <div className="text-[10px] font-mono uppercase tracking-wider text-gold-light mb-2">Typical workflow</div>
+                          <ol className="space-y-1.5">
+                            {(SKILL_WORKFLOWS[skill.name] || []).map((step, stepIndex) => (
+                              <li key={step} className="flex gap-2 text-[10px] leading-snug text-white/75">
+                                <span className="font-mono text-gold-primary">0{stepIndex + 1}</span>
+                                <span>{step}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
                       </div>
-                      <span className="font-mono text-[11px] text-white/45">
-                        {skill.level}
-                      </span>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 font-mono text-[11px] text-white/40 flex justify-between">
-                <span>MASTERY PROFILE</span>
-                <span className="text-gold-light font-medium">PRODUCTION READY</span>
+              <div className="mt-5 pt-4 border-t border-white/10 font-mono text-[10px] text-white/40 flex justify-between">
+                <span>HIGHLIGHTED SKILLS</span>
+                <span className="text-white/60">{strand.skills.length} listed</span>
               </div>
             </div>
           </ScrollReveal>

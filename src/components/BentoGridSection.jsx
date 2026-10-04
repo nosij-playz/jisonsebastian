@@ -1,6 +1,29 @@
 import React, { useState } from 'react';
-import { PERSONAL_INFO, AWARDS_AND_EDUCATION } from '../data/portfolioData';
+import { PERSONAL_INFO } from '../data/portfolioData';
 import ScrollReveal from './ScrollReveal';
+
+const technicalHighlights = [
+  {
+    name: 'Agentic AI & RAG',
+    detail: 'Built modular LLM agents that coordinate through REST communication for environmental analysis and automation.',
+  },
+  {
+    name: 'Computer Vision',
+    detail: 'Applied a custom CNN to waste classification, reducing classification errors by 30%.',
+  },
+  {
+    name: 'Deep Learning',
+    detail: 'Used GAN-based augmentation for age-invariant face recognition, improving cross-age matching by 12%.',
+  },
+  {
+    name: 'Backend & APIs',
+    detail: 'Built Flask and Django applications with REST APIs, role-based access, and database-backed workflows.',
+  },
+  {
+    name: 'Real-Time Systems',
+    detail: 'Optimized Node.js and WebSocket messaging for sub-50ms latency with more than 100 concurrent users.',
+  },
+];
 
 /**
  * Shadcn Spotlight Bento Grid:
@@ -62,7 +85,7 @@ export default function BentoGridSection() {
                 Autonomous AI Systems &amp; Deep Learning
               </h3>
               <p className="text-white/75 text-xs sm:text-sm leading-relaxed mb-6">
-                Specialized in architecting multi-agent collaborative workflows using LLMs, Retrieval-Augmented Generation (RAG), and custom convolutional neural networks (CNNs). Proven experience reducing waste classification error by 30% and deploying low-latency model inference pipelines.
+                I build <strong className="text-gold-light font-medium">AI systems</strong> that connect research with practical use. My work includes <strong className="text-gold-light font-medium">multi-agent tools</strong> using <strong className="text-gold-light font-medium">large language models (LLMs)</strong> and <strong className="text-gold-light font-medium">retrieval-augmented generation (RAG)</strong>, as well as <strong className="text-gold-light font-medium">computer vision</strong> models built with <strong className="text-gold-light font-medium">convolutional neural networks (CNNs)</strong>. In an environmental project, I helped reduce <strong className="text-gold-light font-medium">waste-classification errors by 30%</strong>. I’ve also worked on making <strong className="text-gold-light font-medium">model inference</strong> faster, so these tools can respond quickly in real applications. I enjoy taking a model beyond training: testing how it behaves, improving the <strong className="text-gold-light font-medium">pipeline</strong>, and making it useful to people.
               </p>
             </div>
 
@@ -95,7 +118,7 @@ export default function BentoGridSection() {
               </span>
 
               <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2">
-                Best Project Award
+                <strong className="text-gold-light font-semibold">Best Project Award</strong>
               </h3>
               <p className="text-white/75 text-xs leading-relaxed">
                 Awarded 1st place in Computer Science for <strong className="text-gold-light">NeuroWave (CAIRS)</strong>, combining real-time weather telemetries with ensemble deep learning on multi-modal sensor inputs.
@@ -125,7 +148,7 @@ export default function BentoGridSection() {
                 GATE 2026 Qualified
               </h3>
               <p className="text-white/75 text-xs leading-relaxed mb-4">
-                Qualified Graduate Aptitude Test in Engineering in Computer Science &amp; IT. Strong algorithmic foundations:
+                Qualified Graduate Aptitude Test in Engineering in <strong className="text-cyber-emerald font-medium">Computer Science &amp; IT</strong>. Strong algorithmic foundations:
               </p>
               
               <div className="text-[11px] font-mono text-white/60 space-y-1">
@@ -141,36 +164,36 @@ export default function BentoGridSection() {
           </div>
         </ScrollReveal>
 
-        {/* Card 4: Double Span (Enterprise Systems & Certifications) */}
+        {/* Card 4: Double Span (AI, Backend & Agentic Systems) */}
         <ScrollReveal direction="up" delay={350} className="md:col-span-2">
           <div className="relative w-full glass-card p-6 sm:p-8 rounded-2xl overflow-hidden group h-full flex flex-col justify-between">
             <div className="relative w-full z-10">
               <div className="flex items-center justify-between mb-4">
                 <span className="font-mono text-xs uppercase tracking-wider text-gold-primary">
-                  03 // ENTERPRISE &amp; CERTIFICATIONS
+                  03 // AI/ML, BACKEND &amp; AGENTIC AI
                 </span>
-                <span className="font-mono text-xs text-white/40">5 VERIFIED CREDENTIALS</span>
+                <span className="font-mono text-xs text-white/40">5 PROJECT HIGHLIGHTS</span>
               </div>
 
               <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2">
-                SAP Technology Consultant &amp; Cloud Architecture
+                From Models to Working Systems
               </h3>
               <p className="text-white/75 text-xs sm:text-sm leading-relaxed mb-6">
-                Equipped with enterprise software integration skills including SAP ABAP workflow automation, Google Cloud AI/ML transformation, and advanced deep learning certifications from IIT Ropar.
+                I bring AI work into practical applications, combining machine learning, vision, agent workflows, and backend systems.
               </p>
             </div>
 
-            {/* Grid of Verified Certifications */}
+            {/* Grid of applied technical highlights */}
             <div className="relative w-full z-10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-4 border-t border-white/10">
-              {AWARDS_AND_EDUCATION.certifications.map((cert) => (
+              {technicalHighlights.map((highlight, index) => (
                 <div 
-                  key={cert.name}
+                  key={highlight.name}
                   className="flex items-center gap-2.5 p-2.5 rounded-lg bg-white/[0.03] border border-white/10 hover:border-gold-primary/30 transition-colors"
                 >
-                  <span className="text-gold-primary text-xs font-bold">✓</span>
+                  <span className="font-mono text-[10px] text-gold-primary">0{index + 1}</span>
                   <div className="min-w-0">
-                    <p className="text-xs font-medium text-white truncate">{cert.name}</p>
-                    <p className="text-[10px] font-mono text-white/50">{cert.issuer}</p>
+                    <p className="text-xs font-medium text-white">{highlight.name}</p>
+                    <p className="text-[10px] leading-relaxed text-white/55">{highlight.detail}</p>
                   </div>
                 </div>
               ))}

@@ -46,6 +46,84 @@
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
+/* Featured project fan: keep the closed stack aligned, then spread on hover or keyboard focus. */
+.project-deck-fan {
+  isolation: isolate;
+}
+
+.project-deck-card {
+  transform-origin: 50% 130%;
+  transform: rotate(0deg);
+  transition: transform 0.5s cubic-bezier(.2, .85, .2, 1);
+  will-change: transform;
+}
+
+.project-deck-fan:hover .project-deck-card,
+.project-deck-fan:focus-within .project-deck-card {
+  transform: rotate(var(--fan-rotation)) translateY(var(--fan-lift));
+}
+
+.project-deck-card:nth-child(1) { transition-delay: 0s; }
+.project-deck-card:nth-child(2) { transition-delay: .04s; }
+.project-deck-card:nth-child(3) { transition-delay: .08s; }
+.project-deck-card:nth-child(4) { transition-delay: .04s; }
+.project-deck-card:nth-child(5) { transition-delay: 0s; }
+
+.project-deck-card:hover,
+.project-deck-card:focus-within {
+  outline: none;
+  transform: rotate(var(--fan-rotation)) translateY(-24px) !important;
+  z-index: 40 !important;
+}
+
+.project-deck-card:focus-within {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, .85), 0 20px 40px -18px rgba(0, 0, 0, .8);
+}
+
+/* Compact, shadcn-inspired skill cards with a workflow on the reverse. */
+.skill-flip-card {
+  min-height: 132px;
+  perspective: 900px;
+}
+
+.skill-flip-inner {
+  position: relative;
+  min-height: 132px;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.2, .75, .25, 1);
+}
+
+.skill-flip-card:hover .skill-flip-inner,
+.skill-flip-card:focus .skill-flip-inner,
+.skill-flip-card.is-flipped .skill-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.skill-flip-face:not(.skill-flip-back) {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .22);
+}
+
+.skill-flip-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-deck-card { transition: transform .2s; }
+  .skill-flip-inner { transition: none; }
+
+  .project-deck-fan:hover .project-deck-card,
+  .project-deck-fan:focus-within .project-deck-card {
+    transform: translateX(calc(var(--n) * 48px));
+  }
+}
+
 /* Tactical Chamfered Corners */
 .chamfer-sm {
   clip-path: polygon(0 6px, 6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);

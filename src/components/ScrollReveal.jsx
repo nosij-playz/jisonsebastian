@@ -13,7 +13,16 @@ export default function ScrollReveal({
   distance = 32
 }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const ref = useRef(null);
+
+  useEffect(() => {
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updatePreference = () => setPrefersReducedMotion(motionPreference.matches);
+    updatePreference();
+    motionPreference.addEventListener('change', updatePreference);
+    return () => motionPreference.removeEventListener('change', updatePreference);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,11 +57,11 @@ export default function ScrollReveal({
       ref={ref}
       className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[transform,opacity,filter] ${className}`}
       style={{
-        transform: getTransform(),
-        opacity: isVisible ? 1 : 0,
-        filter: isVisible ? 'blur(0px)' : 'blur(6px)',
-        transitionDuration: isVisible ? '700ms' : '300ms',
-        transitionDelay: isVisible ? `${delay}ms` : '0ms'
+        transform: prefersReducedMotion ? 'none' : getTransform(),
+        opacity: prefersReducedMotion || isVisible ? 1 : 0,
+        filter: prefersReducedMotion || isVisible ? 'blur(0px)' : 'blur(6px)',
+        transitionDuration: prefersReducedMotion ? '0ms' : isVisible ? '700ms' : '300ms',
+        transitionDelay: prefersReducedMotion ? '0ms' : isVisible ? `${delay}ms` : '0ms'
       }}
     >
       {children}
