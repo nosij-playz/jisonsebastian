@@ -127,8 +127,9 @@ export default function CardFolderProjects() {
         </div>
 
         {/* Quick Folder Switch Tabs */}
-        <div className="flex items-center gap-1.5 sm:gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none w-full max-w-full">
-          {featuredProjects.map((project, idx) => (
+        <div className="w-full overflow-hidden mb-6">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none w-full">
+            {featuredProjects.map((project, idx) => (
             <button
               key={project.id}
               type="button"
@@ -149,11 +150,13 @@ export default function CardFolderProjects() {
               )}
             </button>
           ))}
+          </div>
         </div>
 
         {/* 3D Fanning Deck Stage */}
-        <div className="relative min-h-[500px] sm:min-h-[560px] flex items-center justify-center perspective-[1200px] pt-10 pb-6 select-none">
-          <div className="relative w-full max-w-4xl h-[400px] sm:h-[460px]">
+        <div className="w-full overflow-hidden relative z-10">
+          <div className="relative min-h-[500px] sm:min-h-[560px] flex items-center justify-center perspective-[1200px] pt-10 pb-6 select-none w-full">
+            <div className="relative w-full max-w-4xl h-[400px] sm:h-[460px]">
             {featuredProjects.map((project, idx) => {
               const isSelected = activeCardIndex === idx;
               const isEjecting = isShuffling && shufflingIdx === idx;
@@ -271,6 +274,7 @@ export default function CardFolderProjects() {
                 </div>
               );
             })}
+          </div>
           </div>
         </div>
 

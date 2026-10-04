@@ -142,7 +142,7 @@ export default function App() {
       {/* =========================================================
           SCROLLABLE PORTFOLIO CONTENT LAYERS (Z-INDEX 10)
       ========================================================= */}
-      <main className="relative z-10 w-full flex flex-col">
+      <main className="relative z-10 w-full flex flex-col overflow-x-hidden">
         {/* 1. Hero & Verified Accolades */}
         <HeroSection />
 
