@@ -73,10 +73,10 @@ export default function CardFolderProjects() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/20 text-xs font-mono text-gold-light mb-4">
           <span>03 // PORTFOLIO WORKS</span>
         </div>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+        <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
           Flagship Engineering <span className="gold-gradient-text">&amp; Projects</span>
         </h2>
-        <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-white/70 max-w-2xl mx-auto text-xs sm:text-base leading-relaxed px-2">
           From award-winning multi-modal climate systems to agentic waste intelligence and low-latency WebSockets. Explore all 15 real-world platforms built by Jison.
         </p>
       </ScrollReveal>
@@ -88,8 +88,8 @@ export default function CardFolderProjects() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-4 border-b border-white/10">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-sm bg-gold-primary"></span>
-            <h3 className="font-display text-lg sm:text-xl font-bold text-white tracking-tight">
-              3D Interactive Folder Deck (Top 5 Flagships)
+            <h3 className="font-display text-base sm:text-xl font-bold text-white tracking-tight">
+              3D Interactive Folder Deck <span className="hidden sm:inline">(Top 5 Flagships)</span>
             </h3>
           </div>
           
@@ -304,10 +304,10 @@ export default function CardFolderProjects() {
       <div className="mt-16 sm:mt-24">
         <ScrollReveal direction="up" className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div>
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
-              Complete Project Catalog (All 15 Verified Repos)
+            <h3 className="font-display text-lg sm:text-2xl font-bold text-white leading-snug">
+              Complete Project Catalog <span className="block sm:inline sm:text-white/70">(All 15 Verified Repos)</span>
             </h3>
-            <p className="text-white/50 text-xs font-mono mt-1">
+            <p className="text-white/50 text-[10px] sm:text-xs font-mono mt-1.5 sm:mt-1 leading-relaxed">
               EVERY PRODUCTION REPO, ML PIPELINE, AND UTILITY PRESERVED FROM OLD PORTFOLIO
             </p>
           </div>

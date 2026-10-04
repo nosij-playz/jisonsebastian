@@ -43,8 +43,8 @@ export default function DnaSkillsCarousel() {
     const updateRadii = () => {
       const width = window.innerWidth;
       if (width < 640) {
-        setRadii({ inner: 80, mid: 135, outer: 195 });
-        setTiltAspect(0.52);
+        setRadii({ inner: 50, mid: 90, outer: 135 }); // Drastically reduced for tiny mobiles
+        setTiltAspect(0.55);
       } else if (width < 1024) {
         setRadii({ inner: 135, mid: 235, outer: 340 });
         setTiltAspect(0.50);
