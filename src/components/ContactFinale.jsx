@@ -275,7 +275,7 @@ export default function ContactFinale() {
                         placeholder="e.g. Alex Vance"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-sm outline-none transition-all disabled:opacity-50"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-base sm:text-sm outline-none transition-all disabled:opacity-50"
                       />
                     </div>
 
@@ -290,7 +290,7 @@ export default function ContactFinale() {
                         placeholder="e.g. alex@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-sm outline-none transition-all disabled:opacity-50"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-base sm:text-sm outline-none transition-all disabled:opacity-50"
                       />
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export default function ContactFinale() {
                       placeholder="e.g. Project Collaboration / AI System / Full Stack Role"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-sm outline-none transition-all disabled:opacity-50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-base sm:text-sm outline-none transition-all disabled:opacity-50"
                     />
                   </div>
 
@@ -320,7 +320,7 @@ export default function ContactFinale() {
                       placeholder="Tell me about your project, team opportunity, or inquiry..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-sm outline-none transition-all resize-none disabled:opacity-50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-gold-primary focus:bg-white/[0.05] focus:ring-1 focus:ring-gold-primary/30 text-white text-base sm:text-sm outline-none transition-all resize-none disabled:opacity-50"
                     />
                   </div>
 
