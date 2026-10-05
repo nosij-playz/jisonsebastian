@@ -46,6 +46,28 @@
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
+/* Pointer-tracked depth and soft specular glow for the full project catalog. */
+.catalog-project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 150ms ease-out, box-shadow 300ms ease, border-color 300ms ease, background-color 300ms ease;
+}
+
+.catalog-project-glow {
+  opacity: 0;
+  background-image: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 0%),
+    rgba(255, 244, 207, 0.14),
+    rgba(212, 175, 55, 0.07) 22%,
+    rgba(0, 0, 0, 0.08) 68%
+  );
+  transition: opacity 250ms ease;
+}
+
+.catalog-project-card:hover .catalog-project-glow {
+  opacity: 1;
+}
+
 /* Featured project fan: keep the closed stack aligned, then spread on hover or keyboard focus. */
 .project-deck-fan {
   isolation: isolate;
@@ -116,6 +138,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .project-deck-card { transition: transform .2s; }
+  .catalog-project-card,
+  .catalog-project-card:hover {
+    transform: none !important;
+    transition: none;
+  }
+  .catalog-project-glow { transition: none; }
   .skill-flip-inner { transition: none; }
 
   .project-deck-fan:hover .project-deck-card,
