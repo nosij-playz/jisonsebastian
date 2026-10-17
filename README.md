@@ -1,6 +1,6 @@
 # Jison Joseph Sebastian — AI/ML Engineer & Full Stack Developer
 
-**Official Portfolio:** [jisonjosephsebastian.work.gd](https://jisonjosephsebastian.work.gd/)
+**Official Portfolio:** [jisonjosephsebastian](https://jisonjosephsebastian.vercel.app/)
 
 > **High-Performance Executive Dynamic Portfolio**  
 > Cyber-Obsidian & Liquid Gold Design Language · 3D Neural Skills Galaxy · Scrollytelling Kinetic Background · Real-Time Direct Dispatch
