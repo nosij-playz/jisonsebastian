@@ -207,12 +207,15 @@ export default function HeroSection() {
             </div>
           </ScrollReveal>
 
-          {/* Headline */}
+          {/* Direct H1 for Identity & Unambiguous Subject */}
           <ScrollReveal direction="up" delay={200}>
-            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-4 sm:mb-5">
+            <h1 className="font-mono text-xs sm:text-sm md:text-base text-gold-light/95 tracking-widest uppercase font-semibold mb-3">
+              {PERSONAL_INFO.name} &mdash; AI/ML Engineer &amp; Full-Stack Developer
+            </h1>
+            <p className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-4 sm:mb-5">
               Building the Future <br />
               with <span className="gold-gradient-text">Code &amp; Curiosity.</span>
-            </h1>
+            </p>
           </ScrollReveal>
 
           {/* 2. CYBER TEXT DECRYPTION ROLE DISPLAY */}

@@ -17,7 +17,7 @@ export const PERSONAL_INFO = {
   links: {
     github: "https://github.com/nosij-playz",
     linkedin: "https://linkedin.com/in/nosij-playz44",
-    domain: "https://jisonjosephsebastian.work.gd"
+    domain: "https://jisonsebastian.vercel.app"
   },
   stats: [
     { label: "Total Projects", value: "15+" },

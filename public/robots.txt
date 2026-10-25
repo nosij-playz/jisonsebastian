@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jisonjosephsebastian.work.gd/sitemap.xml
+Sitemap: https://jisonsebastian.vercel.app/sitemap.xml
